@@ -1,0 +1,30 @@
+security:
+    firewalls:
+        api:
+            pattern: ^/menu
+            security: true
+            http_basic: ~
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: "admin"
+                        roles: [ 'ROLE_ADMIN' ]
+                    user:
+                        password: "user"
+                        roles: [ 'ROLE_USER' ]
+
+    password_hashers:
+        Symfony\Component\Security\Core\User\InMemoryUser:
+            algorithm: plaintext
+
+    access_control:
+        # Доступ для всех GET запросов к /menu и /menu/{id} для ROLE_USER
+        - { path: ^/menu$, roles: ROLE_USER, methods: [ GET ] }
+        - { path: ^/menu/.*, roles: ROLE_USER, methods: [ GET ] }
+
+        # Доступ для POST, PATCH, DELETE для ROLE_ADMIN
+        - { path: ^/menu$, roles: ROLE_ADMIN, methods: [ POST, PATCH, DELETE ] }
+        - { path: ^/menu/.*, roles: ROLE_ADMIN, methods: [ POST, PATCH, DELETE ] }
