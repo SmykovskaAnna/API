@@ -11,18 +11,23 @@
 
 ## Як налаштувати та запустити
 1. Клонування репозиторію
+
     ```bash
     git clone <your-repository-url>
     ```
 
 2. Встановлення залежностей
-  ```bash
-  composer install
-  ```
+
+    ```bash
+    composer install
+    ```
+
 3. Запуск серверу
-  ```bash
-  php -S localhost:8000 -t public
-  ```
+
+    ```bash
+    php -S localhost:8000 -t public
+    ```
+   
 Сервер буде доступний за адресою http://localhost:8000/menu
 
 ## Документація API
