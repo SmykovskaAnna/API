@@ -21,10 +21,8 @@ security:
             algorithm: plaintext
 
     access_control:
-        # Доступ для всех GET запросов к /menu и /menu/{id} для ROLE_USER
         - { path: ^/menu$, roles: ROLE_USER, methods: [ GET ] }
         - { path: ^/menu/.*, roles: ROLE_USER, methods: [ GET ] }
 
-        # Доступ для POST, PATCH, DELETE для ROLE_ADMIN
         - { path: ^/menu$, roles: ROLE_ADMIN, methods: [ POST, PATCH, DELETE ] }
         - { path: ^/menu/.*, roles: ROLE_ADMIN, methods: [ POST, PATCH, DELETE ] }
